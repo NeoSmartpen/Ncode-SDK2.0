@@ -1,3 +1,8 @@
+### notice
+This is beta(unstable) version.
+The API spec or sample code can be changed without notice.
+
+---
 ## Ncode™ SDK
 
 Ncode™ SDK for printing Ncode patterns. This open-source library allows you to apply Ncode™ on your paper forms.
