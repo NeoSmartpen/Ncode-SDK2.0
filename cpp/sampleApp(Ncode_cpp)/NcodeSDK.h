@@ -89,8 +89,5 @@ private:
 	bool CheckImageSize(int s, int w, int h, int dpi, NCODE_TYPE ncodeType = N3C6);
 	int GetImageData(unsigned char *data, NCODE_TYPE ncodeType, double widthInch, double heightInch, int dpi, bool isBold, string filename);
 	void DrawNcodeDot(unsigned char *buf, int x, int y, int w, int h, int value, int lineLength, int dpi, bool isBold, NCODE_TYPE ncodeType);
-	vector<string> GetNcodeString(int width, int height, int dpi, unsigned char *data, int dataLength, NCODE_TYPE ncodeType = N3C6);
-	int GetScodeData(unsigned char oneData);
-	void WriteLineCircle(ofstream &file, SizeF *cSize, PointF point);
 };
 
