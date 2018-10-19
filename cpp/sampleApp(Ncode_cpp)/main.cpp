@@ -1,7 +1,6 @@
 #include "NcodeSDK.h"
 #include <iostream>
 #include <string>
-#include <crtdbg.h>
 
 #if _DEBUG
 #pragma comment(lib, "NeoLABNcodeSDK_cpp_x64d.lib")
