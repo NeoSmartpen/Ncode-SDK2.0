@@ -1,7 +1,7 @@
 #include "NcodeSDK.h"
 #include <iostream>
 #include <string>
-
+#include <crtdbg.h>
 
 #if _DEBUG
 #pragma comment(lib, "NeoLABNcodeSDK_cpp_x64d.lib")
@@ -11,11 +11,11 @@
 
 using namespace std;
 
-void main()
+void GenerateNeoLABNcode()
 {
-	CNcodeSDK sdk;
+	CNcodeSDK *sdk = new CNcodeSDK();
 	
-	cout << "Ncode SDK(cpp)version : " << sdk.GetVersion() + "\n";
+	cout << "Ncode SDK(cpp)version : " << sdk->GetVersion() + "\n";
 
 
 	cout << "\n";
@@ -23,17 +23,17 @@ void main()
 
 
 	// this is sample app key for testing
-	sdk.Init("juyhgt54redfv7ujmnhgt5esq0poli");
+	sdk->Init("juyhgt54redfv7ujmnhgt5esq0poli");
 
 
 	cout << "\n";
 	cout << "2) Getting tickets list (optional)\n";
 
-	vector<TicketInfo> tickets = sdk.GetTickets();
+	vector<TicketInfo> tickets = sdk->GetTickets();
 
 	if (tickets.size() == 0)
 	{
-		cout << "   Error message : " + sdk.GetLastError() + "\n";
+		cout << "   Error message : " + sdk->GetLastError() + "\n";
 		getchar();
 		return;
 	}
@@ -57,21 +57,21 @@ void main()
 		cout << "   Page    : " + to_string(tickets[i].pageStart) + "~" + to_string(tickets[i].pageStart + tickets[i].pageSize - 1) + "\n";
 	}
 
+
 	cout << "\n";
 	cout << "3) Choose ticket and set start page (optional)\n";
 
-
-	int ticketIndex = 1;
+	int ticketIndex = 0;
 	int ownerOffset = 0;
 	int bookOffset = 0;
 	int pageOffset = 0;
 
-	TicketInfo startPageInfo = sdk.SetStartPageFromTicket(tickets[ticketIndex], ownerOffset, bookOffset, pageOffset);
+	TicketInfo startPageInfo = sdk->SetStartPageFromTicket(tickets[ticketIndex], ownerOffset, bookOffset, pageOffset);
 
-	if (sdk.IsValidTicket(startPageInfo) == false)
+	if (sdk->IsValidTicket(startPageInfo) == false)
 	{
 		cout << "   Ticket range error\n";
-		cout << "   Error message : " + sdk.GetLastError() + "\n";
+		cout << "   Error message : " + sdk->GetLastError() + "\n";
 		getchar();
 		return;
 	}
@@ -83,8 +83,9 @@ void main()
 
 	cout << "\n";
 	cout << "4) Set size for inch from paper name (optional)\n";
-	string paperSizeName = "A4";
-	SizeF pageSize = sdk.GetInchValueFromPaperName(
+	
+	string paperSizeName = "A10";
+	SizeF pageSize = sdk->GetInchValueFromPaperName(
 		paperSizeName,		// A4, A6, LETTER, LEGAL...
 		false);				// true = landscape, false = portrait
 	cout << "   Paper SizeF (" + paperSizeName + ") : " + "(" + to_string(pageSize.width) + ", " + to_string(pageSize.height) + ")\n";
@@ -92,17 +93,18 @@ void main()
 
 	cout << "\n";
 	cout << "5) Generating Ncode data\n";
+
 	vector<NcodePage> codeData;
 	int pageCount = 1;
 	
-	if (sdk.GenerateNcode(
+	if (sdk->GenerateNcode(
 		codeData,			// out
 		startPageInfo,
 		pageSize.width,     // inch
 		pageSize.height,    // inch
 		pageCount) != 0)
 	{
-		cout << "   Error message : " + sdk.GetLastError() + "\n";
+		cout << "   Error message : " + sdk->GetLastError() + "\n";
 		getchar();
 		return;
 	}
@@ -110,7 +112,7 @@ void main()
 	// You can also create Ncode data via entering code informaion directly.
 	// Use it when you do not need to inquiry tickets and you know exactly what code information you need.
 	//
-	//if (sdk.GenerateNcode(
+	//if (sdk->GenerateNcode(
 	//	codeData,		// out
 	//	N3C6,			// Ncode type
 	//	3,				// section
@@ -121,7 +123,7 @@ void main()
 	//	8.0,			// inch
 	//	pageCount) != 0)
 	//{
-	//	cout << "   Error message : " + sdk.GetLastError() + "\n";
+	//	cout << "   Error message : " + sdk->GetLastError() + "\n";
 	//	getchar();
 	//	return;
 	//}
@@ -138,9 +140,9 @@ void main()
 			to_string(pageSize.width) + "_" +
 			to_string(pageSize.height) + ".png";
 
-		if (sdk.GetImage(codeData[i], 600, outputFilename, false) != 0)
+		if (sdk->GetImage(codeData[i], 600, outputFilename, false) != 0)
 		{
-			cout << "   Error message : " + sdk.GetLastError() + "\n";
+			cout << "   Error message : " + sdk->GetLastError() + "\n";
 			getchar();
 			return;
 		}
@@ -151,27 +153,28 @@ void main()
 	// Temporarily support only S1C6 and P1C6.
 	// Using N3C6 and G3C6 causes 343 error code.
 	/////////////////////////////////////////////////
-	cout << "5-2) Saving Ncode postscript file\n";
-	{
-		string outputFilename =
-			to_string(codeData[0].section) + "_" +
-			to_string(codeData[0].owner) + "_" +
-			to_string(codeData[0].book) + "_" +
-			to_string(codeData[0].page) + "_" +
-			to_string(codeData.size()) + ".ps";
+	//cout << "5-2) Saving Ncode postscript file\n";
+	//{
+	//	string outputFilename =
+	//		to_string(codeData[0].section) + "_" +
+	//		to_string(codeData[0].owner) + "_" +
+	//		to_string(codeData[0].book) + "_" +
+	//		to_string(codeData[0].page) + "_" +
+	//		to_string(codeData.size()) + ".ps";
 
-	    if (sdk.GetPostscript(codeData, outputFilename) != 0)
-	    {
-			cout << "   Error message : " + sdk.GetLastError() + "\n";
-			cout << "   Error message : Temporarily support only S1C6 and P1C6.\n";
-			getchar();
-	        return;
-	    }
+	//    if (sdk->GetPostscript(codeData, outputFilename) != 0)
+	//    {
+	//		cout << "   Error message : " + sdk->GetLastError() + "\n";
+	//		cout << "   Error message : Temporarily support only S1C6 and P1C6.\n";
+	//		_CrtDumpMemoryLeaks();
+	//		getchar();
+	//        return;
+	//    }
 
-		cout << "5-2-1) Converting postscript to PDF via Ghostscript\n";
-		string ghostscriptCmd = "ps2pdf " + outputFilename;
-		system(ghostscriptCmd.c_str());
-	}
+	//	cout << "5-2-1) Converting postscript to PDF via Ghostscript\n";
+	//	string ghostscriptCmd = "ps2pdf " + outputFilename;
+	//	system(ghostscriptCmd.c_str());
+	//}
 
 	for (int i = 0; i < pageCount; ++i)
 	{
@@ -184,7 +187,14 @@ void main()
 	cout << "\n";
 	cout << "6) Complete\n";
 	cout << "   press a key\n";
+
+	delete sdk;
 	getchar();
 
 	return;
+}
+
+void main()
+{
+	GenerateNeoLABNcode();
 }
