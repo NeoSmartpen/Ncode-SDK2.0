@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sampleApp(NCode_cpp)", "sampleApp(NCode_cpp)\sampleApp(NCode_cpp).vcxproj", "{D716C3E3-65FC-484A-8406-6D35845A59F4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sampleApp(Ncode_cpp)", "sampleApp(NCode_cpp)\sampleApp(NCode_cpp).vcxproj", "{D716C3E3-65FC-484A-8406-6D35845A59F4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mupdfSample", "sampleApp(mupdf)\mupdfSample.vcxproj", "{4B842347-BF37-41FD-BA16-02D3C3DE7F34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +15,18 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D716C3E3-65FC-484A-8406-6D35845A59F4}.Debug|x64.ActiveCfg = Debug|Win32
-		{D716C3E3-65FC-484A-8406-6D35845A59F4}.Debug|x64.Build.0 = Debug|Win32
-		{D716C3E3-65FC-484A-8406-6D35845A59F4}.Debug|x86.ActiveCfg = Debug|Win32
-		{D716C3E3-65FC-484A-8406-6D35845A59F4}.Debug|x86.Build.0 = Debug|Win32
+		{D716C3E3-65FC-484A-8406-6D35845A59F4}.Debug|x64.ActiveCfg = Debug|x64
+		{D716C3E3-65FC-484A-8406-6D35845A59F4}.Debug|x64.Build.0 = Debug|x64
+		{D716C3E3-65FC-484A-8406-6D35845A59F4}.Debug|x86.ActiveCfg = Debug|x64
 		{D716C3E3-65FC-484A-8406-6D35845A59F4}.Release|x64.ActiveCfg = Release|x64
 		{D716C3E3-65FC-484A-8406-6D35845A59F4}.Release|x64.Build.0 = Release|x64
-		{D716C3E3-65FC-484A-8406-6D35845A59F4}.Release|x86.ActiveCfg = Release|Win32
-		{D716C3E3-65FC-484A-8406-6D35845A59F4}.Release|x86.Build.0 = Release|Win32
+		{D716C3E3-65FC-484A-8406-6D35845A59F4}.Release|x86.ActiveCfg = Release|x64
+		{4B842347-BF37-41FD-BA16-02D3C3DE7F34}.Debug|x64.ActiveCfg = Debug|Win32
+		{4B842347-BF37-41FD-BA16-02D3C3DE7F34}.Debug|x86.ActiveCfg = Debug|Win32
+		{4B842347-BF37-41FD-BA16-02D3C3DE7F34}.Debug|x86.Build.0 = Debug|Win32
+		{4B842347-BF37-41FD-BA16-02D3C3DE7F34}.Release|x64.ActiveCfg = Release|Win32
+		{4B842347-BF37-41FD-BA16-02D3C3DE7F34}.Release|x86.ActiveCfg = Release|Win32
+		{4B842347-BF37-41FD-BA16-02D3C3DE7F34}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

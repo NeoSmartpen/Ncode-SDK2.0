@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4B842347-BF37-41FD-BA16-02D3C3DE7F34}</ProjectGuid>
+    <RootNamespace>mupdfSample</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <IgnoreSpecificDefaultLibraries>libcmtd.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h" />
+    <ClInclude Include="mupdf\fitz.h" />
+    <ClInclude Include="mupdf\fitz\annotation.h" />
+    <ClInclude Include="mupdf\fitz\archive.h" />
+    <ClInclude Include="mupdf\fitz\band-writer.h" />
+    <ClInclude Include="mupdf\fitz\bidi.h" />
+    <ClInclude Include="mupdf\fitz\bitmap.h" />
+    <ClInclude Include="mupdf\fitz\buffer.h" />
+    <ClInclude Include="mupdf\fitz\colorspace.h" />
+    <ClInclude Include="mupdf\fitz\compressed-buffer.h" />
+    <ClInclude Include="mupdf\fitz\config.h" />
+    <ClInclude Include="mupdf\fitz\context.h" />
+    <ClInclude Include="mupdf\fitz\crypt.h" />
+    <ClInclude Include="mupdf\fitz\device.h" />
+    <ClInclude Include="mupdf\fitz\display-list.h" />
+    <ClInclude Include="mupdf\fitz\document.h" />
+    <ClInclude Include="mupdf\fitz\filter.h" />
+    <ClInclude Include="mupdf\fitz\font.h" />
+    <ClInclude Include="mupdf\fitz\function.h" />
+    <ClInclude Include="mupdf\fitz\geometry.h" />
+    <ClInclude Include="mupdf\fitz\getopt.h" />
+    <ClInclude Include="mupdf\fitz\glyph-cache.h" />
+    <ClInclude Include="mupdf\fitz\glyph.h" />
+    <ClInclude Include="mupdf\fitz\hash.h" />
+    <ClInclude Include="mupdf\fitz\image.h" />
+    <ClInclude Include="mupdf\fitz\link.h" />
+    <ClInclude Include="mupdf\fitz\outline.h" />
+    <ClInclude Include="mupdf\fitz\output-pcl.h" />
+    <ClInclude Include="mupdf\fitz\output-png.h" />
+    <ClInclude Include="mupdf\fitz\output-pnm.h" />
+    <ClInclude Include="mupdf\fitz\output-ps.h" />
+    <ClInclude Include="mupdf\fitz\output-pwg.h" />
+    <ClInclude Include="mupdf\fitz\output-svg.h" />
+    <ClInclude Include="mupdf\fitz\output-tga.h" />
+    <ClInclude Include="mupdf\fitz\output.h" />
+    <ClInclude Include="mupdf\fitz\path.h" />
+    <ClInclude Include="mupdf\fitz\pixmap.h" />
+    <ClInclude Include="mupdf\fitz\pool.h" />
+    <ClInclude Include="mupdf\fitz\separation.h" />
+    <ClInclude Include="mupdf\fitz\shade.h" />
+    <ClInclude Include="mupdf\fitz\store.h" />
+    <ClInclude Include="mupdf\fitz\stream.h" />
+    <ClInclude Include="mupdf\fitz\string-util.h" />
+    <ClInclude Include="mupdf\fitz\structured-text.h" />
+    <ClInclude Include="mupdf\fitz\system.h" />
+    <ClInclude Include="mupdf\fitz\text.h" />
+    <ClInclude Include="mupdf\fitz\track-usage.h" />
+    <ClInclude Include="mupdf\fitz\transition.h" />
+    <ClInclude Include="mupdf\fitz\tree.h" />
+    <ClInclude Include="mupdf\fitz\ucdn.h" />
+    <ClInclude Include="mupdf\fitz\util.h" />
+    <ClInclude Include="mupdf\fitz\version.h" />
+    <ClInclude Include="mupdf\fitz\writer.h" />
+    <ClInclude Include="mupdf\fitz\xml.h" />
+    <ClInclude Include="mupdf\html.h" />
+    <ClInclude Include="mupdf\memento.h" />
+    <ClInclude Include="mupdf\pdf-tools.h" />
+    <ClInclude Include="mupdf\pdf.h" />
+    <ClInclude Include="mupdf\pdf\annot.h" />
+    <ClInclude Include="mupdf\pdf\appearance.h" />
+    <ClInclude Include="mupdf\pdf\clean.h" />
+    <ClInclude Include="mupdf\pdf\cmap.h" />
+    <ClInclude Include="mupdf\pdf\crypt.h" />
+    <ClInclude Include="mupdf\pdf\document.h" />
+    <ClInclude Include="mupdf\pdf\event.h" />
+    <ClInclude Include="mupdf\pdf\field.h" />
+    <ClInclude Include="mupdf\pdf\font.h" />
+    <ClInclude Include="mupdf\pdf\interpret.h" />
+    <ClInclude Include="mupdf\pdf\javascript.h" />
+    <ClInclude Include="mupdf\pdf\name-table.h" />
+    <ClInclude Include="mupdf\pdf\object.h" />
+    <ClInclude Include="mupdf\pdf\output-pdf.h" />
+    <ClInclude Include="mupdf\pdf\page.h" />
+    <ClInclude Include="mupdf\pdf\parse.h" />
+    <ClInclude Include="mupdf\pdf\resource.h" />
+    <ClInclude Include="mupdf\pdf\widget.h" />
+    <ClInclude Include="mupdf\pdf\xref.h" />
+    <ClInclude Include="mupdf\svg.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
