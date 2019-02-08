@@ -214,6 +214,12 @@ namespace sampleApp_Ncode_cs_adobe_
             Console.WriteLine("4-1) Saving Ncode image file");
             Console.WriteLine();
 
+            // When you generate N3C6 or G3C6 code image, you can select dot type, "dot" or "line".
+            // If you set "true", it generate "dot" code image.
+            // If you set "false", it generate "line" code image.
+            // S1C6, P1C6 and postscript output use just only "dot" code.
+            sdk.SetDotType(false);
+
             for (int i = 0; i < pageCount; ++i)
             {
                 string outputFilename = string.Format("{0}_{1}_{2}_{3}_{4}_{5}.png",
