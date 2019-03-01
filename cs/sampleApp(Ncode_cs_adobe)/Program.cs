@@ -43,7 +43,7 @@ namespace sampleApp_Ncode_cs_adobe_
 
             if (!sdk.Init(appKey_NcodeSDK))
             {
-                Console.WriteLine("Initializing Adobe PDF lib failed.");
+                Console.WriteLine("Initializing Ncode SDK failed.");
                 return;
             }
             else
