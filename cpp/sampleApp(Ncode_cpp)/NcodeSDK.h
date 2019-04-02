@@ -12,8 +12,8 @@ enum NCODE_TYPE
 	NONE = 0,
 	N3C6,
 	G3C6,
-	S1C6,   // Scode
-	P1C6    // Acode, Pcode
+	S1C6,
+	P1C6
 };
 
 typedef struct _NcodePage

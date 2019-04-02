@@ -119,6 +119,10 @@ namespace sampleApp_Ncode_cs_adobe_
             Console.WriteLine("   Found " + tickets.Count + " ticket(s)");
             Console.WriteLine();
 
+            ////// notice
+            // section 44 is intented for certain firmware.
+            // Your neo smartpen may not recognize section 44 code.
+
             for (int i = 0; i < tickets.Count; ++i)
             {
                 Console.WriteLine("   Ticket[" + i.ToString() + "]");

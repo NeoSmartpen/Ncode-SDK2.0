@@ -37,6 +37,10 @@ void GenerateNeoLABNcode()
 		return;
 	}
 	
+	////// notice
+	// section 44 is intented for certain firmware.
+	// Your neo smartpen may not recognize section 44 code.
+	
 	cout << "   Found " + to_string(tickets.size()) + " ticket(s)\n";
 
 	for (int i = 0; i < tickets.size(); ++i)
