@@ -80,7 +80,7 @@ namespace sampleApp_Ncode_
             Console.WriteLine("3) Choose ticket and set start page (optional)");
             Console.WriteLine();
 
-            int ticketIndex = 1;
+            int ticketIndex = 0;
             int ownerOffset = 0;
             int bookOffset = 0;
             int pageOffset = 0;
