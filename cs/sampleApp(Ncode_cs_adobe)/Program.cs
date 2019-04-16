@@ -52,10 +52,26 @@ namespace sampleApp_Ncode_cs_adobe_
                 Console.WriteLine();
             }
 
-            // Input your Adobe pdf library key.
-            // If you don't have it, you should perchase it.
+            // Enter resource folder path
             string libPath = Directory.GetCurrentDirectory();
-            string libKey = "Input your key";       // key string is similar to "Gqmeu6ollrqna8Pub5..."
+            
+            // This libKey is not the license key.
+            // Please refer below description of Datalogics' sample code.
+            // This libKey is needed for remove K from CMYK color space.
+            // If you don't need remove K, leave libKey blank.
+
+            // Datalogics description
+           /* You may find that you receive exceptions when you attempt to open
+            * PDF files that contain permissions restrictions on content or image
+            * extraction.  This is due to the APIs used for viewing: these can
+            * also be used in other contexts for content extraction or enabling
+            * save-as-image capabilities. If you are making a PDF file viewer and
+            * you encounter this situation, please contact your support
+            * representative or support@datalogics.com to request a key to enable
+            * bypassing this restriction check.
+            */
+            string libKey = "";
+
             if (!lib.init(libPath, libKey))
             {
                 Console.WriteLine("Initializing Adobe PDF lib failed.");
@@ -291,7 +307,7 @@ namespace sampleApp_Ncode_cs_adobe_
         void RemoveK_and_AddNcode_from_Image(string inputPdfFilename, string outputPdfFilename, string[] ncodeIamgeFilenames)
         {
             IPDFDocument doc = lib.openDocument(inputPdfFilename);
-            IPDFDocument newDoc = lib.copyDocumentOnlyPageStructure(doc, false);
+            IPDFDocument newDoc = lib.copyDocument(doc);
 
             if (doc == null)
             {
@@ -310,20 +326,23 @@ namespace sampleApp_Ncode_cs_adobe_
 
             Console.WriteLine();
             Console.WriteLine("1) Removing carbon black field(K) from CMYK colorspace from PDF file");
+            Console.WriteLine(" ! This step does not work if you have not entered the correct libKey.");
             Console.WriteLine();
 
-            for (int i = 0; i < newDoc.getPageCount(); i++)
+            if (newDoc.controller().IsLibKeyOk() == true)
             {
-                using (IPDFPage newPage = newDoc.getPageObj(i))
+                for (int i = 0; i < newDoc.getPageCount(); i++)
                 {
-                    if (newPage.convertColorSpaceToCMY(doc, 200) == false)
+                    using (IPDFPage newPage = newDoc.getPageObj(i))
                     {
-                        Console.WriteLine(newPage.lastErrorMsg());
-                        return;
+                        if (newPage.convertColorSpaceToCMY(doc, 200) == false)
+                        {
+                            Console.WriteLine(newPage.lastErrorMsg());
+                            return;
+                        }
                     }
                 }
             }
-
 
             Console.WriteLine("2) Making Ncoded PDF with Ncode image files.");
             Console.WriteLine();
