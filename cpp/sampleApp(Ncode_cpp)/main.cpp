@@ -13,7 +13,7 @@ using namespace std;
 void GenerateNeoLABNcode()
 {
 	CNcodeSDK *sdk = new CNcodeSDK();
-	
+
 	cout << "Ncode SDK(cpp)version : " << sdk->GetVersion() + "\n";
 
 
@@ -36,11 +36,7 @@ void GenerateNeoLABNcode()
 		getchar();
 		return;
 	}
-	
-	////// notice
-	// section 44 is intented for certain firmware.
-	// Your neo smartpen may not recognize section 44 code.
-	
+
 	cout << "   Found " + to_string(tickets.size()) + " ticket(s)\n";
 
 	for (int i = 0; i < tickets.size(); ++i)
@@ -86,8 +82,8 @@ void GenerateNeoLABNcode()
 
 	cout << "\n";
 	cout << "4) Set size for inch from paper name (optional)\n";
-	
-	string paperSizeName = "A10";
+
+	string paperSizeName = "A4";
 	SizeF pageSize = sdk->GetInchValueFromPaperName(
 		paperSizeName,		// A4, A6, LETTER, LEGAL...
 		false);				// true = landscape, false = portrait
@@ -99,7 +95,7 @@ void GenerateNeoLABNcode()
 
 	vector<NcodePage> codeData;
 	int pageCount = 1;
-	
+
 	if (sdk->GenerateNcode(
 		codeData,			// out
 		startPageInfo,
@@ -114,7 +110,7 @@ void GenerateNeoLABNcode()
 
 	// You can also create Ncode data via entering code informaion directly.
 	// Use it when you do not need to inquiry tickets and you know exactly what code information you need.
-	//
+
 	//if (sdk->GenerateNcode(
 	//	codeData,		// out
 	//	N3C6,			// Ncode type
@@ -151,33 +147,26 @@ void GenerateNeoLABNcode()
 		}
 	}
 
-	/////////////////////////////////////////////////
-	// caution!
-	// Temporarily support only S1C6 and P1C6.
-	// Using N3C6 and G3C6 causes 343 error code.
-	/////////////////////////////////////////////////
-	//cout << "5-2) Saving Ncode postscript file\n";
-	//{
-	//	string outputFilename =
-	//		to_string(codeData[0].section) + "_" +
-	//		to_string(codeData[0].owner) + "_" +
-	//		to_string(codeData[0].book) + "_" +
-	//		to_string(codeData[0].page) + "_" +
-	//		to_string(codeData.size()) + ".ps";
+	cout << "5-2) Saving Ncode postscript file\n";
+	{
+		string outputFilename =
+			to_string(codeData[0].section) + "_" +
+			to_string(codeData[0].owner) + "_" +
+			to_string(codeData[0].book) + "_" +
+			to_string(codeData[0].page) + "_" +
+			to_string(codeData.size()) + ".ps";
 
-	//    if (sdk->GetPostscript(codeData, outputFilename) != 0)
-	//    {
-	//		cout << "   Error message : " + sdk->GetLastError() + "\n";
-	//		cout << "   Error message : Temporarily support only S1C6 and P1C6.\n";
-	//		_CrtDumpMemoryLeaks();
-	//		getchar();
-	//        return;
-	//    }
+		if (sdk->GetPostscript(codeData, outputFilename) != 0)
+		{
+			cout << "   Error message : " + sdk->GetLastError() + "\n";
+			getchar();
+			return;
+		}
 
-	//	cout << "5-2-1) Converting postscript to PDF via Ghostscript\n";
-	//	string ghostscriptCmd = "ps2pdf " + outputFilename;
-	//	system(ghostscriptCmd.c_str());
-	//}
+		cout << "5-2-1) Converting postscript to PDF via Ghostscript\n";
+		string ghostscriptCmd = "ps2pdf " + outputFilename;
+		system(ghostscriptCmd.c_str());
+	}
 
 	for (int i = 0; i < pageCount; ++i)
 	{
