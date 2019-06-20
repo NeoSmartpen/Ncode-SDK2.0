@@ -22,7 +22,7 @@ void GenerateNeoLABNcode()
 
 
 	// this is sample app key for testing
-	sdk->Init("juyhgt54redfv7ujmnhgt5esq0poli");
+	sdk->Init("184b265d3aed5ccfab05c6b5167f3");
 
 
 	cout << "\n";
