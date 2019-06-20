@@ -39,7 +39,7 @@ namespace sampleApp_Ncode_cs_adobe_
 
             // This is sample app key for testing.
             // If you have your app key, enter here.
-            string appKey_NcodeSDK = "juyhgt54redfv7ujmnhgt5esq0poli";
+            string appKey_NcodeSDK = "184b265d3aed5ccfab05c6b5167f3";
 
             if (!sdk.Init(appKey_NcodeSDK))
             {

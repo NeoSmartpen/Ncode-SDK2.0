@@ -29,7 +29,7 @@ namespace sampleApp_Ncode_
             Console.WriteLine();
             
             // this is sample app key for testing
-            if(sdk.Init("juyhgt54redfv7ujmnhgt5esq0poli") == false)
+            if(sdk.Init("184b265d3aed5ccfab05c6b5167f3") == false)
             {
                 Console.WriteLine("   Error message : " + sdk.GetLastError());
                 Console.ReadLine();
