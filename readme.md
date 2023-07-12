@@ -38,8 +38,8 @@ Ncode™ SDK includes a limited test key, you can develop the prototype software
 
 
 Please contact following to get more information:
-   - Global: _global1@neolab.net
-   - Korea: _biz1@neolab.net
+- Global: global@neolab.net
+- Korea: _dombiz@neolab.net
 
 -------------
 And we are using the following open sources.
